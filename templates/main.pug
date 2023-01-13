@@ -1,0 +1,88 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title To_Do_List
+    link(rel="stylesheet", href="myStyle.css")
+    //- To use calendar icon referred from: https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-calendar
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    script(src='myJavaScript.js')
+  body
+    h1#header To_Do_List
+    
+    // conditional logic
+    if message_bool === true
+      div#errorMessage #{message}
+    else 
+      div#MessageNotShown
+
+    //- Add To Do List
+    div#addContainer
+      form(action='/main' method='POST')
+        input#todoTitle(name="todo" size="40" type='text' maxlength="150" placeholder="New task...")
+        input#dueDate(name="due" type="date" size="10" required)
+        button#submit(type='submit') Add
+    
+    br
+
+    div#filterContainer
+      form(action="/main" method="GET")
+        fieldset#filter
+          if optradio === 'all'
+            input#all(type="radio", name="optradio", value="all", checked=true)
+          else
+            input#all(type="radio", name="optradio", value="all", checked=false)
+          label(for="all") All
+
+          if optradio === 'active'
+            input#active(type="radio", name="optradio", value="active", checked=true)
+          else
+            input#active(type="radio", name="optradio", value="active", checked=false)
+          label(for="active") Active
+
+          if optradio === 'done'
+            input#done(type="radio", name="optradio", value="done", checked=true)
+          else
+            input#done(type="radio", name="optradio", value="done", checked=false)
+          label(for="done") Done 
+          
+          button Filter
+
+    div#itemContainer
+      each ToDoList in ToDoLists
+        if ToDoList.status == 0
+          //- if status == 0 (not done), use this code
+          div.items
+            input#checkbox(type="checkbox" name="status" value="status" onclick=`checkStatus(event, ${ToDoList.id})`)
+            label(for="status") 
+            =ToDoList.todo
+            br
+            if ToDoList.date > today
+              div(class="fa fa-calendar") Due Date: 
+                = ToDoList.dueDate
+            else
+              div(class="fa fa-calendar red") Past Due Date:
+                = ToDoList.dueDate
+            form(action=`/main/${ToDoList.id}` method="post" name="deleteForm")
+              button(type="submit") Delete
+        else
+          //- if status != 0 (done), use this code
+          div.items(id="done")  
+            input#checkbox(type="checkbox" name="status" value="status" onclick=`checkStatus(event, ${ToDoList.id})` checked)
+            label(for="status") 
+            =ToDoList.todo
+            br
+            if ToDoList.date > today 
+              div(class="fa fa-calendar") Due Date: 
+                = ToDoList.dueDate
+            else
+              div(class="fa fa-calendar red") Past Due Date:
+                = ToDoList.dueDate
+            form(action=`/main/${ToDoList.id}` method="post" name="deleteForm")
+              button(type="submit") Delete
+          
+          
+          
+
+    

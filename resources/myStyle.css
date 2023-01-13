@@ -1,0 +1,121 @@
+body {
+  background-color: #cccc3d;
+  margin: 0px;
+}
+
+#header {
+  text-align: center;
+  text-shadow: 2px 2px;
+}
+
+/* button css */
+button {
+  background-color: #f2b669;  
+  border-radius: 100px;
+} 
+
+/* referred from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade1 */
+/* referred from: https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_shadow */
+button:hover {
+  box-shadow: rgba(5, 239, 95, 0.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+  background-color: #f48e08;
+}
+/* error message */
+#errorMessage {
+  text-align: center;
+  margin: 2% 10%;
+  padding: 5% 1%;
+  font-size: 250%;
+  font-weight: bolder;
+  border-color: red;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 30px;
+  background-color: #808070;
+}
+
+/* add Container */
+#addContainer {
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: fill;
+}
+
+#addContainer button{
+  float: right;
+}
+
+#addContainer #todoTitle {
+  width: 65%;
+  font-size: 140%;
+}
+
+#addContainer #dueDate {
+  margin-left: 1%;
+  background: transparent;
+  font-size: 140%;
+}
+
+#addContainer #submit {
+  font-size: 140%;
+}
+
+/* filter container */
+#filterContainer {
+  text-align: center;
+}
+
+#filterContainer #filter {
+  display: inline-block;
+  border-width: 0px;
+}
+
+/* items */
+#itemContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+}
+
+.items {
+  min-width: 60%;
+  min-height: 60%;
+  max-width: 70%;
+  padding: 3%;
+  text-align: center;
+  font-size: 150%;
+  border-radius: 3em; 
+  background-color: rgb(228, 228, 221);
+  opacity: 80%;
+  text-indent: 1ch;
+  flex-grow: 1;
+}
+
+
+/* for calendar icon */
+.fa.fa-calendar {
+  display: inline-block;
+  font-size:24px;
+}
+
+.fa.fa-calendar.red {
+  display: inline-block;
+  font-size:24px;
+  color:red;
+}
+
+#checkbox {
+  width: 2rem;
+  height: 2rem;
+  float: left;
+}
+
+#done {
+  background-color: rgb(242, 242, 170);
+}
+
+
